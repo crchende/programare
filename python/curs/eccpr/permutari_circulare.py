@@ -1,3 +1,4 @@
+#test
 '''
     Se da un numar natural n
     Se cere numarul natural m care sa fie maximul obtinut din permutarile
