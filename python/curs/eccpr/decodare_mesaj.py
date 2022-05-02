@@ -1,4 +1,7 @@
-'''
+''' 
+    Decodare mesaj
+    (pozitie ghid pregatire python: 16)
+
     Se da un cod format din majusculele literelor din alfabatul limbii engleze
     si un cod asociat:
     A -> 1

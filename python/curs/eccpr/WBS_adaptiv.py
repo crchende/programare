@@ -1,5 +1,8 @@
 '''
-    Problema WBS Adaptiv - compresie prin tehnica Wite Block Skipping adaptat
+    WBS Adaptiv 
+    (pozitie ghid pregatire python: 15)
+    
+    Compresie prin tehnica Wite Block Skipping adaptat
     adica compresie blocuri de 0 sau 1 la o singura valoare.
     
     Se da lungimea blocului de biti care se analizeaza. De ex se iau blocuri

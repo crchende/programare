@@ -2,6 +2,9 @@
 #test2
 #test3 git push
 '''
+    Permutari Circulare.
+    (pozitie ghid pregatire python: 2)
+
     Se da un numar natural n
     Se cere numarul natural m care sa fie maximul obtinut din permutarile
     circulare ale lui n scris in baza 2

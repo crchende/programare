@@ -1,4 +1,8 @@
 '''
+    Bomboane
+    (pozitie ghid pregatire python: 9)    
+    
+    Sumar:
     Un copil primeste zilnic o suma de bani de care cumpara bomboane
     Magazinul vinde in fiecare zi un anume tip de bomboane cu o anume
     aroma.
