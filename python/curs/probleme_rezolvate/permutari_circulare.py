@@ -1,6 +1,7 @@
 #test
 #test2
 #test3 git push
+# test 4 curs 10/5/2022
 '''
     Permutari Circulare.
     (pozitie ghid pregatire python: 2)
