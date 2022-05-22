@@ -1,3 +1,12 @@
+'''
+    cip_chende@yahoo.com
+
+    Examplu site flask cu citire date din baza de date si actualizare nume
+    materii 'inline', fara folosire formular.    
+    
+'''
+
+
 from flask import Flask, render_template
 from flask import request
 from flask_bootstrap import Bootstrap
