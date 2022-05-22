@@ -1,0 +1,121 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}
+    Flask Site1
+{% endblock title %}
+
+
+{% block head %}
+    {{ super() }}
+    
+    <style>
+    .tabelulmeu {
+        border: 1px solid;
+        font-size: 18px;
+        padding: 4px;
+    } 
+    </style>
+{% endblock head %}
+
+
+{% block navbar %}
+    <div class="navbar" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <a class='navbar-brand' href="/" style="font-size: 30px;">Flask Site1</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="/materii" style="font-size: 20px;">Materii</a></li>
+                    <li><a href="/studenti" style="font-size: 20px;">Studenti</a></li>
+                    <li><a href="/cursuri" style="font-size: 20px;">Cursuri</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+    <script>
+    $('body').on('focus', '[contenteditable]', function() {
+        const $this = $(this);
+        $this.data('before', $this.html());
+        //console.log($this.data('before'))
+        //'blur keyup paste input'
+        //Doar evenimentele blur, paste, keydown duc la transfer de date a server
+    }).on('blur paste keydown', '[contenteditable]', function(event) {
+        //console.log("event.which:", event.which)
+        console.log("event", event)
+        //Vreau ca doar tasta ENTER sa transfere date la server
+        if(event.type === "keydown" && event.which != 13) {
+            //console.log("Tastat tasta cu codul:", event.which)
+            return
+        } else {
+            console.log("Tastat ENTER. cod:", event.which)
+            event.preventDefault()
+        }
+        const $this = $(this);
+        //console.log("this.id:", $this.attr('id'))
+        if ($this.data('before') !== $this.html()) {
+            $this.data('before', $this.html());
+            $this.trigger('change');
+            console.log("Editare INLINE: id, val", $this.attr('id'), $this.html())
+            $.get("modifica/materie", { id: $this.attr('id'), valnoua: $this.html() }, function(result) {
+                console.log("Rezultat modificare:", result)
+                $this.html();
+                console.log("$this.html():", $this.html())
+            });
+        }
+    });
+    </script>
+{% endblock scripts %}
+
+{% block content %}
+    <h1>SALUT {{page}}</h1>
+    {% if page == "studenti" %}
+        <h2>Lista Studenti</h2>
+        <table class='tabelulmeu'>
+        {% for info in studenti %}
+            <tr>
+            {% for el in info %}
+               <td class='tabelulmeu'>{{ el }}</td> 
+            {% endfor %}
+            </tr>
+        {% endfor %}
+        </table>
+    {% endif %}
+    
+    {% if page == "materii" %}
+        <h2>Lista Materii</h2>
+        <table style="border: 1px solid">
+        {% for info in materii %}
+            <tr>
+            {% for i in range(info|length -1) %}
+               <td style="border: 1px solid; padding: 4px; font-size: 18px;">{{ info[i] }}</td> 
+            {% endfor %}
+            <td style="border: 1px solid; padding: 4px; font-size: 18px;" 
+                contenteditable="true"
+                id='{{ info[0] }}'>
+                {{ info[info|length-1] }}
+            </td>
+            </tr>
+        {% endfor %}
+        </table>    
+    {% endif %}
+    
+    {% if page == "cursuri" %}
+        <h2>Lista Prezenta Cursuri</h2>
+        <table style="border: 1px solid">
+        {% for info in cursuri %}
+            <tr>
+            {% for el in info %}
+               <td style="border: 1px solid; padding: 4px; font-size: 18px;">{{ el }}</td> 
+            {% endfor %}
+            </tr>
+        {% endfor %}
+        </table>    
+    {% endif %}
+     
+{% endblock %}
+
