@@ -1,0 +1,5 @@
+# Comanda conectare la CLI-ul de MySQL/MariaDB
+# Trebuie precisat user-ul si parola pe care le-ati configurat 
+# pentru serverul vostru de baze de date 
+
+mysql -u <user> --pass=<parola>
