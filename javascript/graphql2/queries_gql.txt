@@ -1,0 +1,33 @@
+mutation deleteBook {
+  deleteBook(id:7) {
+    id
+  }
+}
+
+mutation updateBook {
+  updateBook(id: 7, authorId: 10) {
+    id
+    authorId
+    author {
+      name
+    }
+  }
+}
+
+query showBook {
+  book(id:3) {
+    id
+    name
+    authorId
+    author {
+      name
+    }
+  }
+}
+
+query showBooks {
+  books {
+    id
+  	authorId
+  }
+}
